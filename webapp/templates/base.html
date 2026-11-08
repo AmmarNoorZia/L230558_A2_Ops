@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% block title %}VisionGuard{% endblock %} — Image Authenticity</title>
+<link rel="stylesheet" href="{{ url_for('static',filename='style.css') }}">
+</head>
+<body>
+<div class="page">
+<header class="topbar"><a class="logo" href="{{url_for('home')}}"><span class="logo-mark">V</span><span>VisionGuard</span></a>
+<nav><a href="{{url_for('home')}}" class="{% if request.path=='/' %}selected{% endif %}">Analyze</a><a href="{{url_for('history_page')}}" class="{% if request.path=='/history' %}selected{% endif %}">History</a><a href="{{url_for('health')}}">API Health</a></nav>
+</header>
+<main>{% block content %}{% endblock %}</main>
+<footer><span>VisionGuard · AI vs Real Image Classification</span><span>Model predictions are estimates, not forensic proof.</span></footer>
+</div>
+{% block scripts %}{% endblock %}
+</body></html>

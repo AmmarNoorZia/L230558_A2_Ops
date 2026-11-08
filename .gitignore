@@ -8,3 +8,26 @@ outputs/tmp/
 data/raw/
 !data/raw/.gitkeep
 # DVC data cache managed by DVC
+
+.env.compose
+instance/
+mlflow.db
+mlruns/
+.env
+.env.*
+!.env.example
+!.env.compose.example
+.venv/
+data/raw/
+.dvc/cache/
+mlruns/
+mlflow.db
+__pycache__/
+*.pyc
+*.db
+/outputs/toy_dvc_lab/
+/outputs/toy_dvc_remote/
+/outputs/tuner_cache/
+/models/*.keras
+!/models/champion.keras
+/outputs/*.keras

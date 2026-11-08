@@ -1,0 +1,12 @@
+{% extends 'base.html' %}{% block title %}Analysis result{% endblock %}
+{% block content %}
+<section class="hero compact"><div class="eyebrow"><span class="pulse"></span> ANALYSIS COMPLETE</div><h1>Image analysis <em>result</em></h1><p>A record of the model prediction is saved below.</p></section>
+<section class="result-layout"><div class="panel verdict">
+<span class="side-index">PREDICTION #{{record.id}}</span><div class="verdict-icon">{% if record.verdict=='AI-generated' %}✳{% else %}◉{% endif %}</div>
+<span class="tiny-label">CLASSIFICATION</span><h2>{{record.verdict}}</h2><p class="verdict-note">Model-based assessment; not definitive evidence of origin.</p>
+<div class="score"><div><span>Estimated confidence</span><strong>{{'%.1f'|format(record.confidence*100)}}%</strong></div><div class="track"><div class="fill" style="width:{{'%.1f'|format(record.confidence*100)}}%"></div></div></div>
+</div><div class="panel details"><div class="panel-head"><span class="num">02</span><div><h2>Prediction details</h2><p>Logged without storing the uploaded image</p></div></div><dl>
+<div><dt>File</dt><dd>{{record.filename}}</dd></div><div><dt>Predicted AI probability</dt><dd>{{'%.1f'|format(record.ai_probability*100)}}%</dd></div><div><dt>Decision threshold</dt><dd>{{'%.2f'|format(record.threshold)}}</dd></div><div><dt>Model version</dt><dd>{{record.model_version}}</dd></div><div><dt>Analyzed (UTC)</dt><dd>{{record.created_at.strftime('%Y-%m-%d %H:%M:%S')}}</dd></div></dl>
+<a href="{{url_for('home')}}" class="primary link-primary">Analyze another image <span>→</span></a></div></section>
+<div class="caveat"><strong>Important</strong><span>Reported confidence is a model score, not a calibrated probability or a guarantee that the result is correct.</span></div>
+{% endblock %}

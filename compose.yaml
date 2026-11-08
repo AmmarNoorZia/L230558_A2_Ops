@@ -1,0 +1,49 @@
+name: visionguard
+services:
+  database:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: visionguard
+      POSTGRES_DB: visionguard
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env.compose}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U visionguard -d visionguard"]
+      interval: 5s
+      timeout: 3s
+      retries: 15
+      start_period: 10s
+    networks: [private_net]
+    # No ports: the database is inaccessible directly from the host.
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: visionguard-web:local
+    restart: unless-stopped
+    depends_on:
+      database:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql+psycopg2://visionguard:${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env.compose}@database:5432/visionguard
+      MODEL_PATH: /app/models/champion.keras
+      MODEL_METADATA_PATH: /app/models/champion_metadata.json
+      FLASK_SECRET_KEY: ${FLASK_SECRET_KEY:?Set FLASK_SECRET_KEY in .env.compose}
+      MAX_UPLOAD_BYTES: '8388608'
+    ports:
+      - '127.0.0.1:5001:5000'
+    volumes:
+      - type: bind
+        source: ./models
+        target: /app/models
+        read_only: true
+    security_opt:
+      - no-new-privileges:true
+    networks: [private_net]
+volumes:
+  postgres_data:
+networks:
+  private_net:
+    driver: bridge

@@ -1,0 +1,12 @@
+{
+  "total_image_files": 974,
+  "valid_labeled_files": 974,
+  "corrupt_files": 0,
+  "unknown_label_files": 0,
+  "duplicate_extra_files": 1,
+  "duplicate_groups": 1,
+  "class_counts": {
+    "AI-generated": 539,
+    "Real": 435
+  }
+}

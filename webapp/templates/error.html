@@ -1,0 +1,2 @@
+{% extends 'base.html' %}{% block title %}Unable to analyze{% endblock %}
+{% block content %}<section class="hero compact"><div class="eyebrow">UPLOAD VALIDATION</div><h1>We couldn't <em>analyze that image</em></h1></section><section class="panel error-panel"><div class="error-icon">!</div><h2>Please check your upload</h2><p>{{message}}</p><a href="{{url_for('home')}}" class="primary link-primary">Try another image <span>→</span></a></section>{% endblock %}

@@ -1,0 +1,13 @@
+{
+  "selected_file": "transfer_head.keras",
+  "version": "transfer_head",
+  "validation_f1": 0.8,
+  "threshold": 0.45000000000000007,
+  "labels": {
+    "0": "Real",
+    "1": "AI-generated"
+  },
+  "image_size": 128,
+  "input_range": "0..255 RGB",
+  "preprocess": "tf.image.resize_with_pad to 128x128; saved model embeds normalization"
+}

@@ -1,0 +1,10 @@
+{
+  "model": "baseline",
+  "threshold_from_validation": 0.53,
+  "validation_f1": 0.75,
+  "accuracy": 0.6164383561643836,
+  "precision": 0.6146788990825688,
+  "recall": 0.8271604938271605,
+  "f1": 0.7052631578947368,
+  "roc_auc": 0.6564102564102564
+}

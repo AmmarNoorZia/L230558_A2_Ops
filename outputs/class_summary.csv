@@ -1,0 +1,3 @@
+class_label,image_count,width_min,width_median,width_max,height_min,height_median,height_max,size_min,size_median,size_max
+AI-generated,539,225,1024.0,6000,135,800.0,4001,11738,199760.0,5626183
+Real,435,183,940.0,8495,158,720.0,7091,11311,144982.0,10195352

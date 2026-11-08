@@ -1,0 +1,30 @@
+name: VisionGuard CI
+on:
+  push:
+  pull_request:
+jobs:
+  test-and-lint:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.11', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install lightweight test tools
+        run: python -m pip install pillow ruff
+      - name: Compile project modules
+        run: python -m compileall -q webapp
+      - name: Lint for blocking syntax/name errors
+        run: ruff check webapp --select E4,E7,E9,F63,F7,F82
+      - name: Test image validation and interfaces without model artifacts
+        run: python -m unittest discover -s tests -p 'test_ci_*.py' -v
+  docker-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: docker/setup-buildx-action@v3
+      - name: Build production inference image
+        run: docker build -t visionguard-web:ci .
