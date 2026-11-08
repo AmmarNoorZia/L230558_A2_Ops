@@ -1,0 +1,4 @@
+[core]
+    remote = localstore
+['remote "localstore"']
+    url = C:\Users\LENOVO\Desktop\visionguard_dataset_remote

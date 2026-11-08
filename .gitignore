@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+*.pyc
+.env
+.kaggle/
+*.log
+outputs/tmp/
+data/raw/
+!data/raw/.gitkeep
+# DVC data cache managed by DVC
