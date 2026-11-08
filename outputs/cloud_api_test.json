@@ -1,0 +1,35 @@
+{
+  "health": {
+    "status": "ok",
+    "model_version": "transfer_head",
+    "image_size": 128,
+    "threshold": 0.45000000000000007,
+    "backend": "tensorflow-cpu"
+  },
+  "tests": [
+    {
+      "source_category": "RealArt",
+      "filename": "-man-sits-with-a-woman-on-her-phone-at-a-table-while-looking-at-a-computer_l.jpg",
+      "response": {
+        "label": "Real",
+        "ai_probability": 0.183983,
+        "confidence": 0.816017,
+        "threshold": 0.45000000000000007,
+        "model_version": "transfer_head",
+        "disclaimer": "This is a model estimate, not proof of an image's origin."
+      }
+    },
+    {
+      "source_category": "AiArtData",
+      "filename": "-how-important-people-from-the-past-really-looked-11-Pics-5ffd5c0f4d77f__880.jpg",
+      "response": {
+        "label": "AI-generated",
+        "ai_probability": 0.644978,
+        "confidence": 0.644978,
+        "threshold": 0.45000000000000007,
+        "model_version": "transfer_head",
+        "disclaimer": "This is a model estimate, not proof of an image's origin."
+      }
+    }
+  ]
+}
